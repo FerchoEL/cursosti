@@ -15,6 +15,7 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('title');
             $table->string('subtitle');
@@ -29,7 +30,7 @@ class CreateCoursesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('level_id')->references('id')->on('levels')->onDelete('set null');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
-            $table->foreign('price_id')->references('id')->on('price')->onDelete('set null');
+            $table->foreign('price_id')->references('id')->on('prices')->onDelete('set null');
             
 
             $table->timestamps();
